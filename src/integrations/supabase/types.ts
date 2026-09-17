@@ -14,7 +14,179 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      banter_comments: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      event_passes: {
+        Row: {
+          attendee_name: string
+          created_at: string
+          event_slug: string
+          id: string
+          pass_code: string
+          user_id: string
+        }
+        Insert: {
+          attendee_name: string
+          created_at?: string
+          event_slug: string
+          id?: string
+          pass_code?: string
+          user_id: string
+        }
+        Update: {
+          attendee_name?: string
+          created_at?: string
+          event_slug?: string
+          id?: string
+          pass_code?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      hot_take_votes: {
+        Row: {
+          created_at: string
+          hot_take_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          hot_take_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          hot_take_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hot_take_votes_hot_take_id_fkey"
+            columns: ["hot_take_id"]
+            isOneToOne: false
+            referencedRelation: "hot_takes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hot_takes: {
+        Row: {
+          body: string
+          created_at: string
+          discussed_on_air: boolean
+          id: string
+          status: string
+          tag: string
+          updated_at: string
+          user_id: string
+          vote_count: number
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          discussed_on_air?: boolean
+          id?: string
+          status?: string
+          tag: string
+          updated_at?: string
+          user_id: string
+          vote_count?: number
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          discussed_on_air?: boolean
+          id?: string
+          status?: string
+          tag?: string
+          updated_at?: string
+          user_id?: string
+          vote_count?: number
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          items: Json
+          status: string
+          total_kes: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          items?: Json
+          status?: string
+          total_kes: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          items?: Json
+          status?: string
+          total_kes?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          favorite_host: string
+          fpl_manager_id: string | null
+          handle: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          favorite_host: string
+          fpl_manager_id?: string | null
+          handle: string
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          favorite_host?: string
+          fpl_manager_id?: string | null
+          handle?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
